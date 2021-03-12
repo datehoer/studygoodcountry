@@ -1,0 +1,142 @@
+// 简单开源一下这个挑战答题的功能，因为我发现这个其实很好想，但是挺难做的。
+// 请勿将它使用到商业用途，因为会被抓。
+// 仅供学习交流。
+Function 挑战答题
+    Dim num = 1
+    Swipe 364, 1161, 364, 735
+    Delay 1500
+    Swipe 364, 1161, 364, 935
+    Delay 1500
+    Dim intX,intY
+    FindPic 0,0,0,0,"Attachment:挑战答题识别.png","000000",0,0.9,intX,intY
+    If intX > -1 And intY > -1 Then
+        Tap intX+500,intY
+        TracePrint "挑战答题"
+        Delay 5000
+    Else
+        Tap 41, 102
+        Delay 1000
+        Exit Function
+    End If
+    Import "shanhai.lua"
+    Import "zm.luae" //导入插件,只需执行一次
+    zm.Init  //初始化插件,只需执行一次
+    Dim t(),题目
+    If Not zm.OcrBaiDuInit("api""密钥") Then
+        TracePrint "初始化设置百度云识别失败"
+        EndScript
+    End If
+    //全屏识别文字
+    Do
+         
+        For 9
+            题目 = zm.OcrBaiDu(443,290,676,349)
+            TracePrint 题目
+            dim a = zm.HttpGet("http://www.syiban.com/search/index/init.html?modelid=1&q="&题目)
+            TracePrint a
+            //LUA模式匹配,返回数组
+            dim RegexArr = shanhai.RegexFind(a,"答案：(.-)%<")
+            TracePrint RegexArr(0)
+            If RegexArr(0) = null Then 
+                //76,294,323,343
+                题目 = zm.OcrBaiDu(76,294,323,343)
+                TracePrint 题目
+                a = zm.HttpGet("http://www.syiban.com/search/index/init.html?modelid=1&q="&题目)
+                TracePrint a
+                //LUA模式匹配,返回数组
+                RegexArr = shanhai.RegexFind(a,"答案：(.-)%<")
+                If RegexArr(0) = null Then 
+                    // 349,349,531,394
+                    题目 = zm.OcrBaiDu(349,349,531,394)
+                    TracePrint 题目
+                    a = zm.HttpGet("http://www.syiban.com/search/index/init.html?modelid=1&q="&题目)
+                    TracePrint a
+                    TracePrint RegexArr(0)
+                    If RegexArr(0) = null Then 
+                        TracePrint "null"
+                        Tap 51, 90
+                        Delay 1500
+                        Tap 220, 756
+                        Delay 1500
+                        Exit For
+                    End If 
+                End If
+            End If
+            Dim newanswer = shanhai.RegexFind(RegexArr(0),"[A-Z]")
+            TracePrint newanswer(0)
+            If num > 7 Then 
+                Tap 341, 785
+                Delay 1500
+            End If
+            //判断选项位置
+            FindPic 0,0,0,0,"Attachment:句号判断1.png","000000",2,0.9,intX,intY
+            If intX > -1 And intY > -1 Then
+                Tap intX,intY
+                TracePrint "a"&intX,intY
+                Delay 1500
+            Else
+                FindPic 0, 0, 0, 0, "Attachment:句号判断2.png", "000000", 2, 0.9, intX, intY
+                If intX > -1 And intY > -1 Then
+                    TracePrint "b"&intX,intY
+                    Delay 1500
+                Else
+                    FindPic 0,0,0,0,"Attachment:句号判断3.png","000000",2,0.9,intX,intY
+                    If intX > -1 And intY > -1 Then
+                        TracePrint "c"&intX,intY
+                        Delay 1500
+                    End If
+                End If
+            End If
+            If newanswer(0) = "A" Then 
+                TracePrint "a"
+                Tap intX, intY + 170
+                TracePrint intX, intY + 170
+                Delay 1500
+            ElseIf newanswer(0) = "B" Then
+                TracePrint "b"
+                Tap intX, intY + 290
+                TracePrint intX, intY + 290
+                Delay 1500
+            ElseIf newanswer(0) = "C" Then
+                TracePrint "c"
+                Tap intX, intY + 410
+                TracePrint intX, intY + 410
+                Delay 1500
+            ElseIf newanswer(0) = "D" Then
+                TracePrint "d"
+                Tap intX, intY + 540
+                TracePrint intX, intY + 540
+                Delay 1500
+            Else
+                Tap 341, 785
+                Delay 1500
+            End If
+            FindPic 0,0,0,0,"Attachment:挑战答题意外结束.png","000000",0,0.9,intX,intY
+            If intX > -1 And intY > -1 Then
+                Tap 217,886
+                Delay 1500
+                Tap 51, 92
+                Delay 1500
+                Exit For
+            End If
+        Next
+        FindPic 0,0,0,0,"Attachment:挑战答题意外结束.png","000000",0,0.9,intX,intY
+        If intX > -1 And intY > -1 Then
+            Tap 217,886
+            Delay 1500
+            Tap 51, 92
+            Delay 1500
+        End If
+        Delay 3000
+        FindPic 0,0,0,0,"Attachment:挑战答题识别.png","000000",0,0.9,intX,intY
+        If intX > -1 And intY > -1 Then
+            Tap intX+500,intY
+            TracePrint "挑战答题"
+            Delay 5000
+        Else
+            Tap 41, 102
+            Delay 1000
+            Exit Function
+        End If
+    Loop
+End Function
