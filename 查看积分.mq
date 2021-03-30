@@ -1,0 +1,8 @@
+//推荐将所有部分打包成函数加在一起
+Function 查看积分
+    Tap 562, 95
+    Delay 3000
+    Dim 积分=SmartOcr(232,228,497,319, "FFFFFF-000000")
+    ShowMessage "你的积分为" & 积分
+    Delay 1500
+End Function
