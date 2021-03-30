@@ -1,0 +1,17 @@
+For 3
+        Swipe 364, 1161, 364, 735
+    Next
+    Delay 1500
+    FindPic 0,0,0,0,"Attachment:本地频道判断.png","000000",0,0.9,intX,intY
+    If intX > -1 And intY > -1 Then
+        Tap intX + 460, intY
+        Delay 1000
+    End If
+    Delay 2000
+    FindPic 0,0,0,0,"Attachment:本地频道.png","000000",0,0.9,intX,intY
+    If intX > -1 And intY > -1 Then
+        Tap intX, intY
+        Delay 3000
+        Tap 46, 93
+        Delay 1500
+    End If
