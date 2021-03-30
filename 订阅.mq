@@ -1,0 +1,106 @@
+Function 订阅操作
+    Dim dy = 0
+    Do
+
+        FindPic 0,0,0,0,"Attachment:订阅按钮.png","000000",0,0.9,intX,intY
+        If intX > -1 And intY > -1 Then
+            Tap intX, intY
+            dy = dy + 1
+            Delay 1000
+            TracePrint dy
+            If dy = 2 Then 
+                TracePrint "订阅结束"
+                Exit Do
+            End If
+        Else 
+            Swipe 238, 616, 238, 437, 3000
+            Delay 1000
+        End If
+        
+    Loop
+End Function
+Function 订阅
+    TracePrint "订阅"
+    Dim 订阅栏目
+    订阅栏目 = ReadUIConfig("下拉框1", 0)
+    Delay 1000
+    查看积分
+    For 3
+        Swipe 364, 1161, 364, 735
+    Next
+    Delay 1500
+    FindPic 0,0,0,0,"Attachment:订阅.png","000000",0,0.9,intX,intY
+    If intX > -1 And intY > -1 Then
+        Tap intX+300, intY
+        Delay 3000
+    End If
+    Delay 1500
+    If 订阅栏目 = 0 Then 
+        TracePrint "执行的是",订阅栏目
+        订阅操作
+    ElseIf 订阅栏目 = 1 Then
+        TracePrint "执行的是",订阅栏目
+        FindPic 0,0,0,0,"Attachment:主要媒体.png","000000",0,0.9,intX,intY
+        If intX > -1 And intY > -1 Then
+            Tap intX,intY
+            TracePrint intX
+            TracePrint intY
+            Delay 1500
+        End If
+        订阅操作
+    ElseIf 订阅栏目 = 2 Then
+        TracePrint "执行的是",订阅栏目
+        FindPic 0,0,0,0,"Attachment:行业媒体.png","000000",0,0.9,intX,intY
+        If intX > -1 And intY > -1 Then
+            Tap intX,intY
+            TracePrint intX
+            TracePrint intY
+            Delay 1500
+        End If
+        订阅操作
+    ElseIf 订阅栏目 = 3 Then
+        TracePrint "执行的是",订阅栏目
+        FindPic 0,0,0,0,"Attachment:机关.png","000000",0,0.9,intX,intY
+        If intX > -1 And intY > -1 Then
+            Tap intX,intY
+            TracePrint intX
+            TracePrint intY
+            Delay 1500
+        End If
+        订阅操作
+    ElseIf 订阅栏目 = 4 Then
+        TracePrint "执行的是",订阅栏目
+        FindPic 0,0,0,0,"Attachment:高校.png","000000",0,0.9,intX,intY
+        If intX > -1 And intY > -1 Then
+            Tap intX,intY
+            TracePrint intX
+            TracePrint intY
+            Delay 1500
+        End If
+        订阅操作
+    ElseIf 订阅栏目 = 5 Then
+        TracePrint "执行的是",订阅栏目
+        FindPic 0,0,0,0,"Attachment:地方媒体.png","000000",0,0.9,intX,intY
+        If intX > -1 And intY > -1 Then
+            Tap intX,intY
+            TracePrint intX
+            TracePrint intY
+            Delay 1500
+        End If
+        订阅操作
+    ElseIf 订阅栏目 = 6 Then
+        TracePrint "执行的是",订阅栏目
+        FindPic 0,0,0,0,"Attachment:社会机构.png","000000",0,0.9,intX,intY
+        If intX > -1 And intY > -1 Then
+            Tap intX,intY
+            TracePrint intX
+            TracePrint intY
+            Delay 1500
+        End If
+        订阅操作
+    End If
+    Tap 40, 95
+    Delay 1500
+    Tap 40, 95
+    Delay 1000
+End Function
