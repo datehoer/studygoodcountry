@@ -1,0 +1,46 @@
+Do
+    	Do 
+        	FindPic 0,0,0,0,"Attachment:视频学习.png","000000",0,0.9,intX,intY
+        	If intX > -1 And intY > -1 Then
+            	Tap intX + 480, intY
+            	Delay 1000
+            	Exit Do
+        	Else 
+            	For 3
+                	Swipe 364, 735, 364, 1161
+                	Delay 1500
+            	Next
+        	End If
+    	Loop
+    	FindPic 0,0,0,0,"Attachment:百灵.png","000000",0,0.8,intX,intY
+    	If intX > -1 And intY > -1 Then
+        	Tap intX, intY
+        	Delay 3000
+    	Else 
+        	Tap 217, 1227
+        	Delay 3000
+    	End If
+    	Tap 349, 446
+    	Delay 450000
+    	Tap 48, 103
+    	Delay 500
+    	Tap 48, 103
+    	Delay 500
+    	Do
+    		FindPic 0,0,0,0,"Attachment:扫一扫.png","000000",0,0.9,intX,intY
+			If intX > -1 And intY > -1 Then
+				TracePrint "回到主页"
+				Exit Do
+			Else  
+				KeyPress "Back"
+				Delay 1500
+			End If
+    	Loop
+    	查看积分 //这个是查看积分是否全部获得
+    	Swipe 364,1001, 364, 735
+    	Delay 1500
+    	FindPic 0,0,0,0,"Attachment:视频上限.png","000000",0,0.9,intX,intY
+		If intX > -1 And intY > -1 Then
+			Exit Function
+		End If
+    Loop
