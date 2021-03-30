@@ -1,0 +1,159 @@
+Dim i= 0
+    Delay 1500
+    FindPic 0,0,0,0,"Attachment:选读文章标志.png","000000",0,0.9,intX,intY
+    If intX > -1 And intY > -1 Then 
+        TracePrint "跳转"
+        Tap intX + 500, intY+70
+        Delay 1000
+    End If
+    Delay 2000
+    TracePrint "要闻"
+    // 要闻
+    FindPic 0,0,0,0,"Attachment:要闻.png","000000",0,0.9,intX,intY
+    If intX > -1 And intY > -1 Then 
+        TracePrint intX, intY
+        Tap intX, intY
+        Delay 1000
+    End If
+    Delay 2000
+    // 查找文章
+    //语音播报
+    For 8
+        TracePrint i
+        Do
+            FindPic 0,0,0,0,"Attachment:学习强国学习平台.png","000000",0,0.8,intX,intY
+            If intX > -1 And intY > -1 Then 
+                Tap intX + 500, intY
+                Delay 1000
+                Tap intX, intY
+                Delay 3000
+                Exit Do
+            Else 
+                Swipe 364, 1161, 364, 735
+                Delay 1500
+            End If
+        Loop
+        Delay 2000
+        // 分享
+        If i = 1 Then 
+            TracePrint "分享"
+            FindPic 0,0,0,0,"Attachment:分享.png","000000",0,0.9,intX,intY
+            If intX > -1 And intY > -1 Then
+                Tap intX, intY
+                Delay 2000
+            End If
+            FindPic 0,0,0,0,"Attachment:分享到学习强国.png","000000",0,0.8,intX,intY
+            If intX > -1 And intY > -1 Then
+                Tap intX, intY
+                Delay 2000
+            End If
+            FindPic 0,0,0,0,"Attachment:选择群聊.png","000000",0,0.8,intX,intY
+            If intX > -1 And intY > -1 Then
+                Tap intX, intY
+                Delay 2000
+            End If
+            FindPic 0,0,0,0,"Attachment:返回上级.png","000000",0,0.9,intX,intY
+            If intX > -1 And intY > -1 Then
+                Tap intX, intY
+                Delay 2000
+            End If
+            FindPic 0,0,0,0,"Attachment:返回上级.png","000000",0,0.9,intX,intY
+            If intX > -1 And intY > -1 Then
+                Tap intX, intY
+                Delay 2000
+            End If
+        End If
+        // 评论
+        If i = 2 Then 
+            TracePrint "评论"
+            FindPic 0,0,0,0,"Attachment:你的观点.png","000000",0,0.8,intX,intY
+            If intX > -1 And intY > -1 Then
+                Tap intX, intY
+                Delay 2000
+            End If
+            FindPic 0,0,0,0,"Attachment:输入文字.png","000000",0,0.8,intX,intY
+            If intX > -1 And intY > -1 Then
+                Tap intX, intY
+                Delay 2000
+                InputText 评论语句(随机数())
+                // 如果设置自定义的话，应该增加if
+                Delay 2000
+                InputText 评论语句(随机数())
+                Delay 3000
+            End If
+            FindPic 0,0,0,0,"Attachment:发布.png","000000",0,0.8,intX,intY
+            If intX > -1 And intY > -1 Then
+                Tap intX, intY
+                Delay 2000
+            End If
+            FindPic 0,0,0,0,"Attachment:删除.png","000000",0,0.8,intX,intY
+            If intX > -1 And intY > -1 Then
+                Tap intX, intY
+                Delay 2000
+                FindPic 0,0,0,0,"Attachment:删除确定.png","000000",0,0.8,intX,intY
+                If intX > -1 And intY > -1 Then
+                    Tap intX, intY
+                    Delay 1500
+                    Tap 49, 95
+                    Delay 1500
+                End If
+            End If
+            // 660,434   657,1041
+            Do
+                Swipe 364, 1161, 364, 735
+                Delay 1500
+                FindPic 0,0,0,0,"Attachment:学习强国学习平台.png","000000",0,0.8,intX,intY
+                If intX > -1 And intY > -1 Then 
+                    Tap intX + 500, intY
+                    Delay 1000
+                    Tap intX, intY
+                    Delay 3000
+                    Exit Do
+                Else 
+                    Swipe 364, 1161, 364, 735
+                    Delay 1500
+                End If
+            Loop
+            Delay 2000	
+        End If
+        // 分享
+        If i = 3 Then 
+            TracePrint "分享"
+            FindPic 0,0,0,0,"Attachment:分享.png","000000",0,0.9,intX,intY
+            If intX > -1 And intY > -1 Then
+                Tap intX, intY
+                Delay 2000
+            End If
+            FindPic 0,0,0,0,"Attachment:分享到学习强国.png","000000",0,0.8,intX,intY
+            If intX > -1 And intY > -1 Then
+                Tap intX, intY
+                Delay 2000
+            End If
+            FindPic 0,0,0,0,"Attachment:选择群聊.png","000000",0,0.8,intX,intY
+            If intX > -1 And intY > -1 Then
+                Tap intX, intY
+                Delay 2000
+            End If
+            FindPic 0,0,0,0,"Attachment:返回上级.png","000000",0,0.9,intX,intY
+            If intX > -1 And intY > -1 Then
+                Tap intX, intY
+                Delay 2000
+            End If
+            FindPic 0,0,0,0,"Attachment:返回上级.png","000000",0,0.9,intX,intY
+            If intX > -1 And intY > -1 Then
+                Tap intX, intY
+                Delay 2000
+            End If
+        End If
+        Swipe 316, 424, 316, 1156
+        Delay 1500
+        For 30
+            Swipe 316, 424, 316, 356
+            Delay 5000
+        Next
+        i = i + 1
+        Tap 49, 95
+        Delay 1500
+        Swipe 302, 784, 302, 425, 1000
+        Delay 1500
+    Next
