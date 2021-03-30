@@ -1,0 +1,52 @@
+Do
+        FindPic 0,0,0,0,"Attachment:双人对战标志.png","000000",0,0.9,intX,intY
+        If intX > -1 And intY > -1 Then
+            Tap intX + 490, intY
+            TracePrint "双人对战"
+            Delay 3000
+            Exit Do
+        Else 
+            Swipe 238, 616, 238, 437, 3000
+            Delay 2000
+        End If
+    Loop
+    FindPic 0,0,0,0,"Attachment:随即对战.png","000000",0,0.9,intX,intY
+    If intX > -1 And intY > -1 Then
+        Tap intX,intY
+        TracePrint "随机对战"
+        Delay 3000
+    End If
+    Dim x1,y1,d1,x,y,d
+    Randomize
+    x1 = Array("189", "500")
+    y1 = Array("560", "1036")
+    d1 = Array("1000", "1500")
+    Do
+        x = Int((x1(0) - x1(1) + 1) * Rnd() + x1(1))
+        y = Int((y1(0) - y1(1) + 1) * Rnd() + y1(1))
+        d = Int((d1(0) - d1(1) + 1) * Rnd() + d1(1))
+        Tap x, y
+        Delay d
+        FindPic 0,0,0,0,"Attachment:对战失败.png","000000",0,0.9,intX,intY
+        If intX > -1 And intY > -1 Then
+            Exit Do
+        End If
+        FindPic 0,0,0,0,"Attachment:对战胜利.png","000000",0,0.9,intX,intY
+        If intX > -1 And intY > -1 Then
+            Exit Do
+        End If
+        FindPic 0,0,0,0,"Attachment:继续挑战.png","000000",0,0.9,intX,intY
+        If intX > -1 And intY > -1 Then
+            Exit Do
+        End If
+    Loop
+    Delay 3000
+    Tap 51, 92
+    Delay 2000
+    Tap 48, 89
+    Delay 2000
+    Tap 229, 725
+    Delay 2000
+    Tap 41, 96
+    Delay 2000
+    
