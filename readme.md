@@ -35,3 +35,4 @@ autojs免root版:目前开始功能测试，欢迎大家提交反馈。
 下载地址：同上。
 
 如果有什么疑问请发邮件or前往discord询问。
+也可以通过telegram加我:datehoer
